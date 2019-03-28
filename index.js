@@ -50,9 +50,9 @@ app.get('/api/persons/:id', (req, res, next) => {
             res.status(404).end()
         }
     })
-    .catch(error => {
-        next(error)
-    })
+        .catch(error => {
+            next(error)
+        })
 })
 
 app.delete('/api/persons/:id', (req, res, next) => {
@@ -60,9 +60,9 @@ app.delete('/api/persons/:id', (req, res, next) => {
     Person.findByIdAndRemove(id).then(result => {
         res.status(204).end()
     })
-    .catch(error => {
-        next(error)
-    })
+        .catch(error => {
+            next(error)
+        })
 })
 
 app.post('/api/persons', (req, res, next) => {
@@ -76,9 +76,9 @@ app.post('/api/persons', (req, res, next) => {
     person.save().then(newPerson => {
         res.json(newPerson.toJSON())
     })
-    .catch(error => {
-        next(error)
-    })
+        .catch(error => {
+            next(error)
+        })
 })
 
 app.put('/api/persons/:id', (req, res, next) => {
@@ -104,12 +104,12 @@ app.put('/api/persons/:id', (req, res, next) => {
     }
     
     Person.findByIdAndUpdate(req.params.id, person, {new: true})
-    .then(newNote => {
-        res.json(newNote.toJSON())
-    })
-    .catch(error => {
-        next(error)
-    })
+        .then(newNote => {
+            res.json(newNote.toJSON())
+        })
+        .catch(error => {
+            next(error)
+        })
 })
 
 const unknownEndpoint = (req, res) => {
@@ -139,7 +139,7 @@ const invalidContentError = (error, rew, res, next) => {
 app.use(invalidContentError)
 
 const errorDefault = (error, req, res) => {
-    res.status(500).send({error: "unknown server error"})
+    res.status(500).send({error: 'unknown server error'})
 }
 
 app.use(errorDefault)
